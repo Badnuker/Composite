@@ -1,7 +1,7 @@
 package net.badnuker.Items;
 
+import net.badnuker.Entities.EnderSwordEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.thrown.EnderPearlEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
@@ -23,15 +23,15 @@ public class EnderSwordItem extends SwordItem {
         world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_ENDER_PEARL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
         user.getItemCooldownManager().set(this, 20);
         if (!world.isClient) {
-            EnderPearlEntity enderPearlEntity = new EnderPearlEntity(world, user);
-            enderPearlEntity.setItem(itemStack);
-            enderPearlEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
-            world.spawnEntity(enderPearlEntity);
+            EnderSwordEntity enderSwordEntity = new EnderSwordEntity(world, user);
+            enderSwordEntity.setItem(itemStack);
+            enderSwordEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
+            world.spawnEntity(enderSwordEntity);
         }
 
         user.incrementStat(Stats.USED.getOrCreateStat(this));
         if (!user.getAbilities().creativeMode) {
-            itemStack.decrement(0);
+            itemStack.decrement(1);
         }
 
         return TypedActionResult.success(itemStack, world.isClient());
