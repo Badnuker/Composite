@@ -1,6 +1,6 @@
 package net.badnuker;
 
-import net.badnuker.Items.EndSwordItem;
+import net.badnuker.Items.EnderSwordItem;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -20,10 +20,10 @@ public class Composite implements ModInitializer {
 
     public static final Logger LOGGER = LoggerFactory.getLogger("composite");
 
-    public static Item EndSword;
+    public static Item EnderSword;
 
     static {
-        EndSword = Registry.register(Registry.ITEM, new Identifier(Composite.MOD_ID, "end_sword"), (Item) new EndSwordItem(ToolMaterials.DIAMOND, 3, -1.0F, new FabricItemSettings().group(ItemGroup.COMBAT)));
+        EnderSword = Registry.register(Registry.ITEM, new Identifier(Composite.MOD_ID, "ender_sword"), (Item) new EnderSwordItem(ToolMaterials.DIAMOND, 3, -1.0F, new FabricItemSettings().group(ItemGroup.COMBAT)));
     }
 
     @Override
