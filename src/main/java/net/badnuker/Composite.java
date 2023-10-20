@@ -4,6 +4,7 @@ import net.badnuker.Items.EndSwordItem;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ToolMaterials;
 import net.minecraft.util.Identifier;
@@ -19,9 +20,11 @@ public class Composite implements ModInitializer {
 
     public static final Logger LOGGER = LoggerFactory.getLogger("composite");
 
-    public static EndSwordItem EndSword = Registry.register(Registry.ITEM,
-            new Identifier(Composite.MOD_ID, "end_sword"),
-            new EndSwordItem(ToolMaterials.DIAMOND, new FabricItemSettings().group(ItemGroup.TOOLS)));
+    public static Item EndSword;
+
+    static {
+        EndSword = Registry.register(Registry.ITEM, new Identifier(Composite.MOD_ID, "end_sword"), (Item) new EndSwordItem(ToolMaterials.DIAMOND, 3, -1.0F, new FabricItemSettings().group(ItemGroup.COMBAT)));
+    }
 
     @Override
     public void onInitialize() {
